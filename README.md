@@ -12,6 +12,6 @@ Pickup and Player ESP
 
 # Todo:
 - [ ] VR Support
-- [ ] Player ping
-- [ ] Player FPS
+- [x] Player ping
+- [x] Player FPS
 - [ ] Player rank
