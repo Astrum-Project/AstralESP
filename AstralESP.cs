@@ -154,7 +154,7 @@ namespace Astrum
 
             foreach (VRC.Player player in VRC.PlayerManager.field_Private_Static_PlayerManager_0.field_Private_List_1_Player_0)
             {
-                if (player is null || player == VRC.Player.prop_Player_0) continue;
+                if (player is null || player == VRC.Player.prop_Player_0 || player.field_Private_APIUser_0 is null) continue;
                 
                 Vector3 p = Camera.main.WorldToScreenPoint(player.transform.position);
                 if (p.z < 0 || p.z > playersMaxDistance) continue;
@@ -163,6 +163,9 @@ namespace Astrum
 
                 if (player.field_Private_VRCPlayerApi_0.isMaster)
                     builder.Append("<color=orange>");
+
+                if (player.field_Private_APIUser_0.isFriend)
+                    builder.Append("<b>");
 
                 builder.Append(player.field_Private_APIUser_0.displayName);
 
@@ -188,6 +191,9 @@ namespace Astrum
 
                 if (player.field_Private_VRCPlayerApi_0.isMaster)
                     builder.Append("</color>");
+
+                if (player.field_Private_APIUser_0.isFriend)
+                    builder.Append("</b>");
 
                 GUI.Label(new Rect(p.x, Screen.height - p.y, 0, 0), builder.ToString(), style);
             }
