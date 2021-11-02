@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 using VRC.SDKBase;
 
-[assembly: MelonInfo(typeof(Astrum.AstralESP), "AstralESP", "0.2.1", downloadLink: "github.com/Astrum-Project/AstralESP")]
+[assembly: MelonInfo(typeof(Astrum.AstralESP), "AstralESP", "0.2.2", downloadLink: "github.com/Astrum-Project/AstralESP")]
 [assembly: MelonGame("VRChat", "VRChat")]
 [assembly: MelonColor(ConsoleColor.DarkMagenta)]
 
@@ -154,7 +154,7 @@ namespace Astrum
 
             foreach (VRC.Player player in VRC.PlayerManager.field_Private_Static_PlayerManager_0.field_Private_List_1_Player_0)
             {
-                if (player is null || player == VRC.Player.prop_Player_0 || player.field_Private_APIUser_0 is null) continue;
+                if (player?.field_Private_APIUser_0 is null || player == VRC.Player.prop_Player_0) continue;
                 
                 Vector3 p = Camera.main.WorldToScreenPoint(player.transform.position);
                 if (p.z < 0 || p.z > playersMaxDistance) continue;
@@ -189,11 +189,11 @@ namespace Astrum
                     builder.Append(p.z.ToString("0.00"));
                 }
 
-                if (player.field_Private_VRCPlayerApi_0.isMaster)
-                    builder.Append("</color>");
-
                 if (player.field_Private_APIUser_0.isFriend)
                     builder.Append("</b>");
+
+                if (player.field_Private_VRCPlayerApi_0.isMaster)
+                    builder.Append("</color>");
 
                 GUI.Label(new Rect(p.x, Screen.height - p.y, 0, 0), builder.ToString(), style);
             }
