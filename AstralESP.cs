@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 using VRC.SDKBase;
 
-[assembly: MelonInfo(typeof(Astrum.AstralESP), "AstralESP", "0.2.2", downloadLink: "github.com/Astrum-Project/AstralESP")]
+[assembly: MelonInfo(typeof(Astrum.AstralESP), "AstralESP", "0.2.3", downloadLink: "github.com/Astrum-Project/AstralESP")]
 [assembly: MelonGame("VRChat", "VRChat")]
 [assembly: MelonColor(ConsoleColor.DarkMagenta)]
 
@@ -47,11 +47,11 @@ namespace Astrum
             category.CreateEntry("Pickups-Distance", true, "Pickups - Show Distance");
             category.CreateEntry("Pickups-MaxDistance", 10000f, "Pickups - Max Distance");
 
-            category.CreateEntry("Players-Enabled", true, "Pickups - Enabled");
-            category.CreateEntry("Players-FPS", true, "Show - FPS");
-            category.CreateEntry("Players-Ping", true, "Show - Ping");
-            category.CreateEntry("Players-Distance", true, "Pickups - Show Distance");
-            category.CreateEntry("Players-MaxDistance", 10000f, "Pickups - MaxDistance");
+            category.CreateEntry("Players-Enabled", true, "Players - Enabled");
+            category.CreateEntry("Players-FPS", true, "Players - Show FPS");
+            category.CreateEntry("Players-Ping", true, "Players Show Ping");
+            category.CreateEntry("Players-Distance", true, "Players - Show Distance");
+            category.CreateEntry("Players-MaxDistance", 10000f, "Players - MaxDistance");
 
             category.CreateEntry("DisableInVR", true, "Disable In VR");
 
