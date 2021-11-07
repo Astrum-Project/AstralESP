@@ -58,20 +58,21 @@ namespace Astrum
             OnPreferencesLoaded();
         }
 
+        public override void OnPreferencesSaved() => OnPreferencesLoaded();
         public override void OnPreferencesLoaded()
         {
             MelonPreferences_Category category = MelonPreferences.GetCategory("Astrum-AstralESP");
 
-            pickupsEnabled = category.GetEntry<bool>("Pickups-Enabled").Value;
-            pickupsOwner = category.GetEntry<bool>("Pickups-Owner").Value;
-            pickupsDistance = category.GetEntry<bool>("Pickups-Distance").Value;
-            pickupsMaxDistance = category.GetEntry<float>("Pickups-MaxDistance").Value;
+            pickupsEnabled /*    */ = category.GetEntry<bool>("Pickups-Enabled").Value;
+            pickupsOwner /*      */ = category.GetEntry<bool>("Pickups-Owner").Value;
+            pickupsDistance /*   */ = category.GetEntry<bool>("Pickups-Distance").Value;
+            pickupsMaxDistance /**/ = category.GetEntry<float>("Pickups-MaxDistance").Value;
 
-            playersEnabled = category.GetEntry<bool>("Players-Enabled").Value;
-            playersFPS = category.GetEntry<bool>("Players-FPS").Value;
-            playersPing = category.GetEntry<bool>("Players-Ping").Value;
-            playersDistance = category.GetEntry<bool>("Players-Distance").Value;
-            playersMaxDistance = category.GetEntry<float>("Players-MaxDistance").Value;
+            playersEnabled /*    */ = category.GetEntry<bool>("Players-Enabled").Value;
+            playersFPS /*        */ = category.GetEntry<bool>("Players-FPS").Value;
+            playersPing /*       */ = category.GetEntry<bool>("Players-Ping").Value;
+            playersDistance /*   */ = category.GetEntry<bool>("Players-Distance").Value;
+            playersMaxDistance /**/ = category.GetEntry<float>("Players-MaxDistance").Value;
 
             if (XRDevice.isPresent && category.GetEntry<bool>("DisableInVR").Value)
                 pickupsEnabled = playersEnabled = false;
