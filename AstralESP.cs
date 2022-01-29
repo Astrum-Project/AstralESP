@@ -11,11 +11,11 @@ using VRC.SDKBase;
 [assembly: MelonInfo(typeof(Astrum.AstralESP), "AstralESP", "0.3.0", downloadLink: "github.com/Astrum-Project/AstralESP")]
 [assembly: MelonGame("VRChat", "VRChat")]
 [assembly: MelonColor(ConsoleColor.DarkMagenta)]
-[assembly: MelonOptionalDependencies("AstralCore", "AstralTags")]
+[assembly: MelonOptionalDependencies("AstralTags")]
 
 namespace Astrum
 {
-    public class AstralESP : MelonMod
+    public partial class AstralESP : MelonMod
     {
         public bool pickupsEnabled = true;
         public bool pickupsOwner = true;
@@ -42,6 +42,8 @@ namespace Astrum
 
         public override void OnApplicationStart()
         {
+            Outlines.Initialize(HarmonyInstance);
+
             if (AppDomain.CurrentDomain.GetAssemblies().Any(x => x.GetName().Name == "AstralTags"))
                 Extern.SetupTags();
 
@@ -103,7 +105,7 @@ namespace Astrum
         {
             Scene scene = SceneManager.GetSceneByName(name);
 
-            while (scene.GetRootGameObjects().FirstOrDefault(go => go.name.StartsWith("VRCPlayer[Local]")) is null) yield return null;
+            while (Networking.LocalPlayer is null) yield return null;
 
             pickups = UnityEngine.Object.FindObjectsOfType<VRC_Pickup>().Select(f => f.gameObject).ToList();
 
